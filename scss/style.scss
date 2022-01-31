@@ -1,0 +1,335 @@
+@import "fonts";
+
+$maxWidth:1920;
+@mixin a-v ($property, $startSize, $minSize){
+  $addSize: $startSize - $minSize;
+  #{$property}: calc(#{$minSize + px} + #{$addSize} * ((100vw - 980px) / #{$maxWidth - 980}));
+}
+
+html{
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,*::after,*::before{
+  box-sizing:inherit;
+}
+h1,h2,h3,h4,h5,h6{
+  margin: 0;
+}
+p{
+  margin: 0;
+}
+a{
+  text-decoration: none;
+  color: inherit;
+  background-color: transparent;
+}
+ul, li{
+  list-style: none;
+  margin:0;
+  padding: 0;
+}
+img {
+  border-style: none;
+}
+.container{
+  // max-width: 1800px;
+  // padding: 0 120px;
+  @include a-v("padding-top", 10, 6);
+  @include a-v("padding-bottom", 10, 6);
+  @include a-v("padding-left", 120, 20);
+  @include a-v("padding-right", 120, 20);
+  margin: 0 auto;
+}
+body{
+  font-family: 'gilroy-400';
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 29px;
+  color: #000;
+  background-color: #EDF2FF;
+  margin: 0;
+}
+
+
+
+
+
+.header{
+  background-color: #E3D7F1;
+  .header__wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+      @include a-v("width", 110, 60);
+      @include a-v("height", 110, 60);
+      img{
+        @include a-v("width", 110, 56);
+        @include a-v("height", 110, 56);
+      }
+    }
+    .menu{
+      display: flex;
+      .menu__item{
+        font-family: 'gilroy-400';
+        color:#000;
+        @include a-v("font-size", 25, 13);
+        @include a-v("line-height", 25, 13);
+      }
+      .menu__item+.menu__item{
+        @include a-v("margin-left", 100, 50);
+      }
+    }
+  }
+}
+.social{
+  display: flex;
+  .social__item{
+    a{
+      @include a-v("width", 40, 20);
+      @include a-v("height", 40, 20);
+      img{
+        @include a-v("width", 40, 20);
+        @include a-v("height", 40, 20);
+        border-radius: 4px;
+      }
+    }
+  }
+  .social__item+.social__item{
+    @include a-v("margin-left", 35, 17);
+  }
+}
+
+
+
+
+
+
+// @include a-v("padding", 100, 10);
+
+.main-content{
+  background-color: #fff;
+  box-shadow: 0px 4px 6px #CAD6F3;
+  border-radius: 20px;
+  display: flex;
+
+  @include a-v("margin-top", 50, 20);
+  @include a-v("margin-left", 20, 10);
+  @include a-v("margin-right", 20, 10);
+  @include a-v("padding-top", 15, 5);
+  @include a-v("padding-right", 15, 5);
+  @include a-v("padding-bottom", 15, 5);
+  .menu{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include a-v("width", 370, 195);
+    .menu__top{
+      display: flex;
+      flex-direction: column;
+      align-items:center;
+      .menu__logo{
+        @include a-v("width", 75, 40);
+        @include a-v("height", 75, 40);
+        @include a-v("margin-top", 50, 20);
+        @include a-v("margin-bottom", 50, 20);
+      }
+      .menu__items{
+        width: 100%;
+        .menu__item{
+          cursor: pointer;
+          box-sizing:content-box;
+          font-family: 'Roboto-Bold';
+          font-weight: 700;
+          line-height: 30px;
+          color: #323232;
+          // @include a-v("padding-left", 5, 0);
+          @include a-v("padding-left", 20, 11);
+          @include a-v("padding-top", 14, 5);
+          @include a-v("padding-bottom", 22, 7);
+          @include a-v("font-size", 24, 14);
+          span{
+            display: inline-block;
+            transform: translateY(20%);
+            @include a-v("width", 30, 14);
+            @include a-v("height", 30, 14);
+            svg{
+              @include a-v("width", 30, 14);
+              @include a-v("height", 30, 14);
+            }
+          }
+        }
+        .menu__item--active{
+          color: #A790C6;
+          background-color: #EDF2FF;
+          @include a-v("padding-left", 50, 14);
+          svg{
+            path{
+              fill: none;
+              stroke: #A790C6;
+            }
+            circle{
+              stroke: #A790C6;
+            }
+          }
+        }
+      }
+    }
+    .menu__bottom{
+      @include a-v("margin-top", 250, 150);
+      .menu__social{
+        display: flex;
+        justify-content: center;
+        .menu__social-item{
+          img{
+            border-radius: 3px;
+            @include a-v("width", 38, 20);
+            @include a-v("height", 38, 20);
+          }
+        }
+        .menu__social-item+.menu__social-item{
+          @include a-v("margin-left", 38, 20);
+        }
+      }
+      .menu__btn-exit{
+        text-align: center;
+        color: #A790C6;
+        @include a-v("margin-top", 30, 10);
+        @include a-v("margin-bottom", 30, 10);
+        @include a-v("font-size", 26, 14);
+        @include a-v("line-height", 26, 14);
+        span{
+          display: inline-block;
+          @include a-v("width", 26, 14);
+          @include a-v("height", 26, 14);
+          img{
+            @include a-v("width", 26, 14);
+            @include a-v("height", 26, 14);
+          }
+        }
+      }
+    }
+  }
+  .content{
+    flex:1;
+    background: rgba(249, 250, 253, 0.77);
+    box-shadow: inset 0px 0px 8px 1px rgba(202, 214, 243, 0.6);
+    border-radius: 20px;
+    @include a-v("padding-top", 40, 20);
+    @include a-v("padding-bottom", 40, 20);
+    .content__row+.content__row{
+      @include a-v("margin-top", 40, 20);
+    }
+    .content__row{
+      display: flex;
+      justify-content: space-between;
+      @include a-v("margin-left", 105, 40);
+      @include a-v("margin-right", 105, 40);
+      .content__column--off{
+        opacity: 0;
+      }
+      .content__column:nth-child(2){
+        flex: 1.2;
+      }
+
+      .content__column{
+        background-color: #fff;
+        box-shadow: 0px 4px 6px #CAD6F3;
+        border-radius: 20px;
+        flex: 1;
+        @include a-v("padding", 30, 10);
+        .text{
+          text-align: center;
+          @include a-v("font-size", 30, 17);
+          @include a-v("line-height", 34, 22);
+          span{
+            font-family: 'gilroy-600';
+            font-weight: 600;
+          }
+        }
+        .my-score__bottom{
+          display: flex;
+          @include a-v("margin-top", 30, 15);
+          .my-score__btn{
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items:center;
+            justify-content: center;
+            cursor: pointer;
+            @include a-v("font-size", 18, 9);
+            @include a-v("line-height", 20, 11);
+            span{
+              display: inline-block;
+              @include a-v("width", 44, 23);
+              @include a-v("height", 40, 21);
+              img{
+                @include a-v("width", 44, 23);
+                @include a-v("height", 40, 21);
+              }
+            }
+          }
+          .my-score__score{
+            font-family: 'gilroy-600';
+            font-weight: 600;
+            flex: 1;
+            text-align: end;
+            @include a-v("font-size", 47, 26);
+            @include a-v("line-height", 47, 26);
+            .fiat{
+              display: inline-block;
+              background-color: #A790C6;
+              font-family: 'gilroy-500';
+              font-weight: 500;
+              border-radius:100%;
+              color: #FFFFFF;
+              transform: translateY(-10%);
+              @include a-v("font-size", 30, 15);
+              @include a-v("line-height", 30, 15);
+              @include a-v("padding-top", 8.5, 5);
+              @include a-v("padding-bottom", 8.5, 5);
+              @include a-v("padding-left", 15.5, 8);
+              @include a-v("padding-right", 15.5, 8);
+            }
+          }
+        }
+
+        .link__title{
+          font-family: 'gilroy-600';
+          font-weight: 600;
+          text-align: center;
+          @include a-v("font-size", 45, 25);
+          @include a-v("line-height", 50, 30);
+        }
+        .link__link{
+          font-family: 'gilroy-500';
+          font-weight: 500;
+          text-align: center;
+          color:#91AFFF;
+          background: rgba(249, 250, 253, 0.77);
+          box-shadow: inset 0px 0px 8px 1px rgba(202, 214, 243, 0.6);
+          border-radius: 22px;
+          @include a-v("font-size", 36, 20);
+          @include a-v("line-height", 42, 24);
+          @include a-v("padding-top", 24, 10);
+          @include a-v("padding-bottom", 24, 10);
+          @include a-v("margin-top", 55, 25);
+          @include a-v("margin-bottom", 55, 25);
+        }
+        .text-min{
+          margin: 0 auto;
+          @include a-v("width", 850, 500);
+        }
+      }
+      .content__column-big{
+        @include a-v("padding", 60, 20);
+      }
+    }
+  }
+}
+
+
+
+
+@import "media";
